@@ -1,5 +1,8 @@
 package com.luxoft.cantor.controller;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Blank {
     private String enteredAmount;
 
