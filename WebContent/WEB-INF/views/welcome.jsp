@@ -44,13 +44,14 @@
 			</c:forEach>
 		</div>
 	</section>
-
+    <section class="container">
 		<form method="post">
 			<div class="btn-group">
 				<input type="submit" value="manage currencies"
-					name="Manage currencies" class="btn btn-primary">
+					name="exchange" class="btn btn-primary">
 			</div>
 		</form>
+	</section>
 
 </body>
 </html>

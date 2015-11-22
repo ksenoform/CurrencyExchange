@@ -44,6 +44,10 @@ public class ChaneMoney {
 
     @RequestMapping(value = "/exchange/{currencCode}", method = RequestMethod.GET)
     public String currencyExchangeView(@PathVariable ("currencCode") String currencCode, Model model) {
+        if ("manage currencies".equals(currencCode)) {
+            return "redirect:/forms/menageForm";
+        }
+        
         model.addAttribute("enteredAmount", blank);
         model.addAttribute("currencCode", currencCode);
         this.currencCode = currencCode;
