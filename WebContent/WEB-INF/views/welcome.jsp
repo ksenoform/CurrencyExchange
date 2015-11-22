@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -14,30 +15,42 @@
 	<section class="container">
 		<div class="row">
 			<c:forEach items="${currencyRates}" var="currenc">
-				<div class="col-sm-2" style="padding-bottom: 10px">
-					<div class="thumbnail">
-						<p>${currenc.dibsCode}</p>
-						<p>${currenc.dibsName}</p>
-						<p>
-							<fmt:formatNumber value="${currenc.dibsRate}"
-								minFractionDigits="4" />
-						</p>
-					</div>
-				</div>
+				<form:form modelAttribute="currenc" class="form-horizontal">
+					<fieldset>
+						<div class="col-sm-4" style="padding-bottom: 12px">
+							<div class="thumbnail">
+							<table style="width:100%">
+								<tr>
+									<td>${currenc.dibsCode}</td>
+									<td>${currenc.dibsName}</td>
+
+									<td><fmt:formatNumber value="${currenc.dibsRate}"
+											minFractionDigits="4" /></td>
+
+									<td>
+										<form method="post">
+											<div class="btn-group">
+												<input type="submit" value="${currenc.dibsCode}"
+													name="exchange" class="btn btn-primary">
+											</div>
+										</form>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</div>
+					</fieldset>
+				</form:form>
 			</c:forEach>
 		</div>
 	</section>
 
-	<div class="codeContainer">
 		<form method="post">
 			<div class="btn-group">
-				<input type="submit" value="exchange" name="Exchange"
-					class="btn btn-primary"> <input type="submit"
-					value="manage currencies" name="Manage currencies"
-					class="btn btn-primary">
+				<input type="submit" value="manage currencies"
+					name="Manage currencies" class="btn btn-primary">
 			</div>
 		</form>
-	</div>
-	
+
 </body>
 </html>
