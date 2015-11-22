@@ -13,7 +13,7 @@
 	<form:form modelAttribute="enteredAmount" class="form-horizontal">
 		<fieldset>
 			<div>
-				<label> How much to change </label>
+				<label> How much money change to ${currencCode} </label>
 				<div>
 					<form:input id="amount" path="amount" type="text"
 						class="form:input-large" />

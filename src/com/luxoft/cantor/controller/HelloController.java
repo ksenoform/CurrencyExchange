@@ -13,26 +13,15 @@ import com.luxoft.cantor.repository.CurrencyRepository;
 public class HelloController {
     @Autowired
     private CurrencyRepository currencyRepository;
-    @Autowired
-    private Blank blank;
-    
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String helloMessage(Model model) {
         model.addAttribute("currencyRates", currencyRepository.getAllCurrency());
         return "welcome";
     }
     
-    @RequestMapping(value="/", method=RequestMethod.POST)
-    public String handlePost(@RequestParam(required=false, value="Exchange") String exchange,
-                             @RequestParam(required=false, value="Manage currencies") String manageCurrencies,
-                             Model model){
-
-        model.addAttribute("enteredAmount", blank);
-        if(exchange != null) {
-            return "exchange/currency";
-        } else {
-            return "exchange/currency";
-        }
-
-    } 
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public String couldCurrencyExchangeView(@RequestParam ("exchange") String exchange) {
+        return "redirect:/exchange/" + exchange;
+  }
 }
