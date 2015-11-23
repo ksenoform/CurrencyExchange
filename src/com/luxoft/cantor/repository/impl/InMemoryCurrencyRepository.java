@@ -52,4 +52,10 @@ public class InMemoryCurrencyRepository implements CurrencyRepository {
         return currencyByCode;
     }
 
+    @Override
+    public void deleteCurrencyByCode(String code) {
+        Dibs dibs = getCurrencyByCode(code);
+        AllCurrency.remove(dibs);
+    }
+
 }
