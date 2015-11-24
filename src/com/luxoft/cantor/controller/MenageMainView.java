@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.luxoft.cantor.repository.CurrencyRepository;
+import com.luxoft.cantor.repository.Dibs;
 import com.luxoft.cantor.support.Getting3TextValuesFromPage;
 import com.luxoft.cantor.support.GettingLonelyWalueFromPage;
 
@@ -52,9 +53,19 @@ public class MenageMainView {
     	return "redirect:/";
     }
     
-    @RequestMapping(value = "forms/AfterMenageForm", params = "OK", method = RequestMethod.POST) 
+    @RequestMapping(value = "forms/AfterMenageForm", params = "deleteOK", method = RequestMethod.POST) 
     public String backToMainPageAfterDelating(@ModelAttribute ("hermit") String hermit) {
     	currencyRepository.deleteCurrencyByCode(hermit);
+    	return "redirect:/";
+    }
+    
+    @RequestMapping(value = "forms/AfterMenageForm", params = "currenciesAddOK", method = RequestMethod.POST) 
+    public String backToMainPageAfterMenageForm(@ModelAttribute ("currenciesAdd") Getting3TextValuesFromPage fromPage) {
+    	currencyRepository.addNewCurrency(new Dibs.BuildDibs()
+    											  .addCode(fromPage.getCode())
+    											  .addName(fromPage.getName())
+    											  .addRate(fromPage.getValue())
+    											  .build());
     	return "redirect:/";
     }
 }
