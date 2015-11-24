@@ -52,6 +52,11 @@ public class InMemoryCurrencyRepository implements CurrencyRepository {
         return currencyByCode;
     }
 
+	@Override
+	public void addNewCurrency(Dibs dibs) {
+		AllCurrency.add(dibs);
+	}
+	
     @Override
     public void deleteCurrencyByCode(String code) {
         Dibs dibs = getCurrencyByCode(code);
