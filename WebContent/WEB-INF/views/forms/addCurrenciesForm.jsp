@@ -35,7 +35,7 @@
             </div>
             <div>
                 <input type="submit" id="btnOK" class="btn btn-primary"
-                    name="OK" value="Ok" />
+                    name="currenciesAddOK" value="Ok" />
             </div>
             <div>
                 <input type="submit" class="btn btn-primary"
