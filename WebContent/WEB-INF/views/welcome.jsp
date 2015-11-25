@@ -30,7 +30,7 @@
 									<td>
 										<form method="post">
 											<div class="btn-group">
-												<input type="submit" value="${currenc.dibsCode}"
+												<input type="submit" value="PLN to ${currenc.dibsCode}"
 													name="exchange" class="btn btn-primary">
 											</div>
 										</form>

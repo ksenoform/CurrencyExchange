@@ -49,8 +49,8 @@ public class ChaneMoney {
         }
         
         model.addAttribute("enteredAmount", blank);
-        model.addAttribute("currencCode", currencCode);
-        this.currencCode = currencCode;
+        model.addAttribute("currencCode", currencCode.substring(7));
+        this.currencCode = currencCode.substring(7);
         
         return "exchange/currency";
     }
