@@ -43,7 +43,7 @@ public class DibsTest {
 	@Test
 	public void checkIfInListAreMoreThen1Element() {
 		dibs.setDibsRate(new BigDecimal(8));
-		assertTrue(dibs.getAllDibsValue().size() > 1);
+		assertTrue(dibs.getDibsRateList().size() > 1);
 	}
 	
 }

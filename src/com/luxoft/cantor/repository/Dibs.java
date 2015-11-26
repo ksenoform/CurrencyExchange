@@ -88,7 +88,7 @@ public class Dibs {
 		this.dibsRate = dibsRate;
 	}
 	
-	public List<DateAndRateOfDibs> getAllDibsValue() {
+	public List<DateAndRateOfDibs> getDibsRateList() {
 		return dibsRateList;
 	}
 

@@ -40,7 +40,6 @@ public class MenageMainView {
         model.addAttribute("currenciesName", new GettingLonelyWalueFromPage());
         return "forms/deleteForm";
     }
-
     
     @RequestMapping(value = "forms/menageForm", params = "Delete currencies", method = RequestMethod.POST)
     public String sendingToPageWitchFormWhoShowsDelatingCurrency(Model model) {
@@ -67,5 +66,11 @@ public class MenageMainView {
     											  .addRate(fromPage.getValue())
     											  .build());
     	return "redirect:/";
+    }
+    
+    @RequestMapping(value = "forms/menageForm", params = "Rates", method = RequestMethod.POST)
+    public String sendingToPageWitchRatesForm(Model model) {
+    	model.addAttribute("currencyRates", currencyRepository.getAllCurrency());
+    	return "forms/ratesForm";
     }
 }
