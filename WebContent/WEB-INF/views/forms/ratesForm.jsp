@@ -13,33 +13,26 @@
 </head>
 <body>
 
+	<h3>Choose Currency to management:</h3>
+
 	<section class="container">
 	<div class="row">
 		<c:forEach items="${currencyRates}" var="rates">
 			<form:form modelAttribute="currenc" class="form-horizontal"
 				method="POST" commandName="marker">
 				<fieldset>
-					<div class="col-sm-10" style="padding-bottom: 16px">
+					<div class="col-sm-3" style="padding-bottom: 16px">
 						<div class="thumbnail">
 							<table style="width: 100%">
 								<tr>
-									<td>${rates.dibsCode}</td>
-
-
-									<c:forEach items="${rates.dibsRateList}" var="rate">
-										<td><fmt:formatNumber value="${rate.dibsRate}"
-												minFractionDigits="4" /></td>
-
-										<section class="container">
-										<form method="post">
-											<div class="btn-group">
-												<input type="submit" value="${rate.dibsDate}"
-													name="${rate.dibsDate}" class="btn btn-primary">
-											</div>
-										</form>
-										</section>
-									</c:forEach>
-
+									<section class="container">
+									<form method="post">
+										<div class="btn-group">
+											<input type="submit" value="${rates.dibsCode}"
+												name="${rates.dibsCode}" class="btn btn-primary">
+										</div>
+									</form>
+									</section>
 								</tr>
 							</table>
 						</div>
