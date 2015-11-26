@@ -1,6 +1,6 @@
 package com.luxoft.cantor.repository;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 
@@ -38,6 +38,12 @@ public class DibsTest {
 	public void checkIfRateVariableWillChangeAfterUpdateRate() {
 		dibs.setDibsRate(new BigDecimal(8));
 		assertEquals(dibs.getDibsRate(), dibs.getRateAndDateOfLastDibs().getDibsRate());
+	}
+	
+	@Test
+	public void checkIfInListAreMoreThen1Element() {
+		dibs.setDibsRate(new BigDecimal(8));
+		assertTrue(dibs.getAllDibsValue().size() > 1);
 	}
 	
 }

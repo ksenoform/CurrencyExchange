@@ -87,6 +87,10 @@ public class Dibs {
 		this.dibsRateList.add(dateAndRate);
 		this.dibsRate = dibsRate;
 	}
+	
+	public List<DateAndRateOfDibs> getAllDibsValue() {
+		return dibsRateList;
+	}
 
 	@Override
 	public String toString() {
