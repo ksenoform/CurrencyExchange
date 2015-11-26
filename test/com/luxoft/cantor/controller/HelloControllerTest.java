@@ -10,12 +10,13 @@ import org.springframework.ui.Model;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HelloControllerTest {
-    @Mock Model model;
-    
-    @Test
-    public void shouldReturnWelcomeMessage() {
-        HelloController controller = new HelloController();
-        assertEquals("welcome", controller.helloMessage(model));
-    }
+	@Mock
+	Model model;
+
+	@Test
+	public void shouldReturnWelcomeMessage() {
+		HelloController controller = new HelloController();
+		assertEquals("welcome", controller.helloMessage(model));
+	}
 
 }
