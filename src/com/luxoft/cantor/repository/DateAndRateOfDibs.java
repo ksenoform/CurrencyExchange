@@ -28,4 +28,8 @@ public class DateAndRateOfDibs {
 	public Date getDibsDate() {
 		return dibsDate;
 	}
+
+	public void setDibsDate(Date dibsDate) {
+		this.dibsDate = dibsDate;
+	}
 }

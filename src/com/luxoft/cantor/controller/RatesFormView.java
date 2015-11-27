@@ -1,5 +1,10 @@
 package com.luxoft.cantor.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +35,21 @@ public class RatesFormView {
 		model.addAttribute("currenc", new GettingLonelyWalueFromPage());
 		return "forms/menageChosenCurrency";
 	}
-	
+
+	@RequestMapping(value = "ofFormOneCurrency", params = "Delete Rate", method = RequestMethod.POST)
+	public String recivingDelateRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyWalueFromPage currenc,
+			Model model) {
+		DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy:HH:mm:SS");
+		Date convertedDate = null;
+		try {
+			convertedDate = (Date) formatter.parse(currenc.getHermit());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		currencyRepository.deleteRateByData(convertedDate);
+		return "forms/menageChosenCurrency";
+	}
+
 	@RequestMapping(value = "menageForm", params = "Rates", method = RequestMethod.POST)
 	public String sendingToPageWitchRatesForm(Model model) {
 		model.addAttribute("currencyRates", currencyRepository.getAllCurrency());
