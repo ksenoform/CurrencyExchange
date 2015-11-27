@@ -81,7 +81,7 @@ public class RatesFormView {
 		return "forms/deleteForm";
 	}
 
-	@RequestMapping(value = "AfterMenageForm", params = "Main Page", method = RequestMethod.POST)
+	@RequestMapping(value = {"AfterMenageForm", "ofFormOneCurrency"}, params = "Main Page", method = RequestMethod.POST)
 	public String backToMainPage() {
 		return "redirect:/";
 	}
