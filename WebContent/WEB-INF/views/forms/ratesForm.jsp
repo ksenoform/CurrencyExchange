@@ -17,32 +17,23 @@
 
 	<section class="container">
 	<div class="row">
-		<c:forEach items="${currencyRates}" var="rates">
-			<form:form modelAttribute="currenc" class="form-horizontal"
-				method="POST" commandName="marker">
-				<fieldset>
-					<div class="col-sm-3" style="padding-bottom: 16px">
-						<div class="thumbnail">
-							<table style="width: 100%">
-								<tr>
-									<section class="container">
-									<form method="post">
-										<div class="btn-group">
-											<input type="submit" value="${rates.dibsCode}"
-												name="${rates.dibsCode}" class="btn btn-primary">
-										</div>
-									</form>
-									</section>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</fieldset>
-			</form:form>
-		</c:forEach>
+		<form:form modelAttribute="currenc" class="form-horizontal"  action="ofFormToMenagment">
+			<c:forEach items="${currencyRates}" var="rates">
+
+				<form:radiobutton path="hermit" value="${rates.dibsCode}"
+					label="${rates.dibsCode}" />
+
+			</c:forEach>
+			
+			<form method="post">
+				<div class="btn-group">
+					<input type="submit" value="Currencies" name="Currencies"
+						class="btn btn-primary">
+				</div>
+			</form>
+		</form:form>
 	</div>
 	</section>
-
 
 
 </body>
