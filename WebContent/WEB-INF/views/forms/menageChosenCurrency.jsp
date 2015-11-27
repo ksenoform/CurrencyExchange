@@ -31,11 +31,14 @@
 		</c:forEach>
 		<form method="post">
 			<div class="btn-group">
-				<input type="submit" value="Add Rate" name="Add Rate"
+				<input type="submit" value="Delete Rate" name="Delete Rate"
 					class="btn btn-primary">
 			</div>
+			<div>
+				<form:input path="hermit" type="text" class="form:input-large" />
+			</div>
 			<div class="btn-group">
-				<input type="submit" value="Delete Rate" name="Delete Rate"
+				<input type="submit" value="Add Rate" name="Add Rate"
 					class="btn btn-primary">
 			</div>
 		</form>

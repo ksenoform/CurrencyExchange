@@ -2,6 +2,7 @@ package com.luxoft.cantor.repository.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -62,5 +63,11 @@ public class InMemoryCurrencyRepository implements CurrencyRepository {
         Dibs dibs = getCurrencyByCode(code);
         AllCurrency.remove(dibs);
     }
+
+	@Override
+	public void deleteRateByData(Date date) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
