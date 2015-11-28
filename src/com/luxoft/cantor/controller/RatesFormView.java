@@ -38,7 +38,6 @@ public class RatesFormView {
     @RequestMapping(value = "ofFormOneCurrency", params = "Delete Rate", method = RequestMethod.POST)
     public String recivingDelateRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyWalueFromPage currenc,
             Model model) {
-        System.out.println(currenc.getHermit());
         Dibs processingDibs = currencyRepository.getCurrencyByCode(currentCode);
         processingDibs.deleteRateFromList(currenc.getHermit());
 
