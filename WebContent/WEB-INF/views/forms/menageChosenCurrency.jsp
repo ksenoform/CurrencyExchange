@@ -35,6 +35,10 @@
 					<input type="submit" value="Delete Rate" name="Delete Rate"
 						class="btn btn-primary">
 				</div>
+				<div class="btn-group">
+                    <input type="submit" value="Set as Active" name="Set as Active"
+                        class="btn btn-primary">
+                </div>
 				<div>
                     <form:input path="hermit" type="text"
                         class="form:input-large" />
