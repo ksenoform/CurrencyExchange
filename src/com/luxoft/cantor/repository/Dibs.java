@@ -1,7 +1,6 @@
 package com.luxoft.cantor.repository;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,19 +92,21 @@ public class Dibs {
 		return dibsRateList;
 	}
 	
-	public void deleteRateFromList(Date date) {
-		DateAndRateOfDibs toRemove = null;
-		
-		for (DateAndRateOfDibs andRateOfDibs: dibsRateList) {
-			if (date.equals(andRateOfDibs.getDibsDate())) {
-				toRemove = new DateAndRateOfDibs(andRateOfDibs.getDibsRate());
-				toRemove.setDibsDate(date);
+	public void deleteRateFromList(String date) {
+		for (int i = dibsRateList.size() - 1; i >= 0; i--) {
+//		for (DateAndRateOfDibs andRateOfDibs: dibsRateList) {
+			if (date.contains(dibsRateList.get(i).getDibsDate())) {
+			    dibsRateList.remove(i);
 			}
 		}
-		
-		if (toRemove != null) {
-			dibsRateList.remove(toRemove);
-		}
+	}
+	
+	public void setActiveRate(String valueFromDate) {
+	    for (DateAndRateOfDibs ofDibs: getDibsRateList()) {
+	        if (valueFromDate.contains(ofDibs.getDibsDate())){
+	          this.dibsRate = ofDibs.getDibsRate();  
+	        }
+	    }
 	}
 
 	@Override

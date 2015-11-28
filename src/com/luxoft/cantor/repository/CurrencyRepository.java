@@ -10,4 +10,5 @@ public interface CurrencyRepository {
     public void addNewCurrency(Dibs dibs);
     public void deleteCurrencyByCode(String code);
     public void deleteRateByData(Date date);
+    
 }
