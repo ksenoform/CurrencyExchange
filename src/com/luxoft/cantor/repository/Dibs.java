@@ -94,7 +94,6 @@ public class Dibs {
 	
 	public void deleteRateFromList(String date) {
 		for (int i = dibsRateList.size() - 1; i >= 0; i--) {
-//		for (DateAndRateOfDibs andRateOfDibs: dibsRateList) {
 			if (date.contains(dibsRateList.get(i).getDibsDate())) {
 			    dibsRateList.remove(i);
 			}
