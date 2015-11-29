@@ -19,7 +19,7 @@ public class ChaneMoney {
     @Autowired
     private CurrencyRepository currencyRepository;
     private String currencCode;
-    BigDecimal afterChange = null;
+    private BigDecimal afterChange = null;
     
     @RequestMapping(value = "exchange/{currencCode}", method = RequestMethod.POST)
     public String showAmountAfterChange(@ModelAttribute("enteredAmount") Blank blank, Model model) {

@@ -15,6 +15,8 @@ public class DateAndRateOfDibs {
 	 
 	    return formatter.format(today);
 	}
+	
+	public DateAndRateOfDibs() {};
 
 	public DateAndRateOfDibs(String dibsRate) {
 		this.dibsDate = getCurrentDateAsString();
