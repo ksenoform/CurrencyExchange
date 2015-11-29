@@ -11,10 +11,18 @@ import com.luxoft.cantor.util.HibernateUtil;
 
 public class DataBaseCurrencyRepository implements CurrencyRepository {
 
+    private Session session;
+
     @Override
     public List<Dibs> getAllCurrency() {
-        // TODO Auto-generated method stub
-        return null;
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        
+        List<Dibs> allCurrency = session.createQuery("from DIBS").list();
+        
+        session.getTransaction().commit();
+        
+        return allCurrency;
     }
 
     @Override
@@ -25,7 +33,7 @@ public class DataBaseCurrencyRepository implements CurrencyRepository {
 
     @Override
     public void addNewCurrency(Dibs dibs) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         session.save(dibs);
