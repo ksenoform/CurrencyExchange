@@ -8,6 +8,13 @@
 	<class name="Dibs" table="DIBS">
 		<id name="dibsCode" />
 		<property name="dibsName" />
+		<set name="dibsRateList" table="dibsRateList" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="dibsCode" not-null="true" />
+			</key>
+			<one-to-many class="com.luxoft.cantor.repository.DateAndRateOfDibs" />
+		</set>
 	</class>
 
 </hibernate-mapping>

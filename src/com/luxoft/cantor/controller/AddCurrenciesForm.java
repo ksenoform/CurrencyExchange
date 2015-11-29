@@ -30,6 +30,7 @@ public class AddCurrenciesForm {
 		dibs.setDibsName(dibsName);
 		dibs.setDibsRate(new BigDecimal(dibsRate));
 		currencyRepository.addNewCurrency(dibs);
+
 		return "redirect:/";
 	}
 

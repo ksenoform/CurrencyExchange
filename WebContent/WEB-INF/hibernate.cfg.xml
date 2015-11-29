@@ -18,5 +18,6 @@
         <!--create the database schema on startup if required -->
         <property name="hbm2ddl.auto">update</property>
         <mapping class="hibernate/Dibs.hbm.xml"/>
+        <mapping class="hibernate/DateAndRateOfDibs.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
