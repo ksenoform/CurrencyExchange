@@ -17,6 +17,6 @@
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
         <!--create the database schema on startup if required -->
         <property name="hbm2ddl.auto">update</property>
-        <mapping class="entities.Subscriber"/>
+        <mapping class="hibernate/Dibs.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
