@@ -27,8 +27,16 @@ public class DataBaseCurrencyRepository implements CurrencyRepository {
 
     @Override
     public Dibs getCurrencyByCode(String code) {
-        // TODO Auto-generated method stub
-        return null;
+    	List<Dibs> allCurrency = getAllCurrency();
+    	Dibs dibs = null;
+    	
+    	for(Dibs oneCurrency: allCurrency) {
+    		if (code.equals(oneCurrency.getDibsCode())) {
+    			dibs = oneCurrency;
+    		}
+    	}
+    	
+        return dibs;
     }
 
     @Override
