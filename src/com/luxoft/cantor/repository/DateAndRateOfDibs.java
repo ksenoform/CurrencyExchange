@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class DateAndRateOfDibs {
 	private String dibsDate = null;
 	private BigDecimal dibsRate = null;

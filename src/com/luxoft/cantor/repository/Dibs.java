@@ -4,10 +4,20 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Dibs {
+	@Id
+	@GeneratedValue
+	private Integer id;
 	private String dibsCode;
 	private String dibsName;
 	private BigDecimal dibsRate;
+	@ElementCollection
 	private List<DateAndRateOfDibs> dibsRateList;
 
 	public static class BuildDibs {
