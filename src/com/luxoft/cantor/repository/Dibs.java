@@ -8,8 +8,10 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "RegistedCurrencys")
 public class Dibs {
 	@Id
 	@GeneratedValue
