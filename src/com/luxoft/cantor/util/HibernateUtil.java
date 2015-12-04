@@ -5,15 +5,45 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class HibernateUtil {
-    public static void sendToDataBase(Object object) {
-    	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myBase");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+	private static EntityManagerFactory entityManagerFactory;
+	private static EntityManager entityManager;
+
+	private static EntityManagerFactory createEntityManagerFactory() {
+		if (entityManagerFactory == null) {
+			try {
+				entityManagerFactory = Persistence.createEntityManagerFactory("myBase");
+			} catch (ExceptionInInitializerError e) {
+				throw e;
+			}
+		}
 		
-		entityManager.getTransaction().begin();
-		entityManager.persist(object);
-		entityManager.getTransaction().commit();
-		
+		return entityManagerFactory;
+	}
+
+	private static EntityManager createEntityManager() {
+		if (entityManager == null) {
+			try {
+				entityManager = createEntityManagerFactory().createEntityManager();
+			} catch (ExceptionInInitializerError e) {
+				throw e;
+			}
+		}
+
+		return entityManager;
+	}
+
+	public static EntityManagerFactory getEntityManagerFactory() {
+		return createEntityManagerFactory();
+	}
+
+	public static EntityManager getEntityManager() {
+		return createEntityManager();
+	}
+
+	public static void close() {
 		entityManager.close();
 		entityManagerFactory.close();
-    }
+	}
+
 }
