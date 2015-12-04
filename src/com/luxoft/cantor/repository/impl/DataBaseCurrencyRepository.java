@@ -20,7 +20,7 @@ public class DataBaseCurrencyRepository implements CurrencyRepository {
 
 	@Override
 	public Dibs getCurrencyByCode(String code) {
-		return null;
+		return currencyDAO.findById(code);
 	}
 
 	@Override
