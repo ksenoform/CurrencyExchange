@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import com.luxoft.cantor.repository.Dibs;
 
@@ -68,8 +69,12 @@ public class CurrencyDAO {
 	public Dibs findById(String code) {
 
 		EntityManager em = HibernateUtil.getEntityManager();
-		Dibs corporation = em.find(Dibs.class, code);
-		return corporation;
+		Query query = em.createQuery("FROM Dibs WHERE dibsCode = :dCode");
+		query.setParameter("dCode", code);
+		@SuppressWarnings("unchecked")
+		List<Dibs> list = (List<Dibs>) query.getResultList();
+		
+		return list.get(0);
 	}
 
 }
