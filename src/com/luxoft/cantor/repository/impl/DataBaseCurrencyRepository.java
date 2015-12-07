@@ -3,10 +3,13 @@ package com.luxoft.cantor.repository.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.luxoft.cantor.repository.CurrencyRepository;
 import com.luxoft.cantor.repository.Dibs;
 import com.luxoft.cantor.util.CurrencyDAO;
 
+@Repository
 public class DataBaseCurrencyRepository implements CurrencyRepository {
 	CurrencyDAO currencyDAO = null;
 
@@ -30,8 +33,7 @@ public class DataBaseCurrencyRepository implements CurrencyRepository {
 
 	@Override
 	public void deleteCurrencyByCode(String code) {
-		// TODO Auto-generated method stub
-
+		currencyDAO.deleteById(code);
 	}
 
 	@Override

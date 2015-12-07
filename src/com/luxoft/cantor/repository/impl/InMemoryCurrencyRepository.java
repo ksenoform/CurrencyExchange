@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.luxoft.cantor.repository.CurrencyRepository;
 import com.luxoft.cantor.repository.Dibs;
 
-@Repository
+
 public class InMemoryCurrencyRepository implements CurrencyRepository {
     private List<Dibs> AllCurrency = new ArrayList<Dibs>();
     
