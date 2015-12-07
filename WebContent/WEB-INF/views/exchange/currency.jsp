@@ -10,13 +10,15 @@
 </head>
 <body>
 
-	<form:form modelAttribute="enteredAmount" class="form-horizontal">
+	<form:form modelAttribute="encodeHermit" class="form-horizontal">
+	<form:errors path="*" cssClass="alert alert-danger" element="div" />
 		<fieldset>
 			<div>
-				<label> How much money change to ${currencCode} </label>
+				<label> How much money change to ${currenyCode} </label>
 				<div>
-					<form:input id="amount" path="amount" type="text"
+					<form:input id="hermit" path="hermit" type="text"
 						class="form:input-large" />
+					<form:errors path="hermit" cssClass="text-danger"/>
 				</div>
 			</div>
 			<div>
