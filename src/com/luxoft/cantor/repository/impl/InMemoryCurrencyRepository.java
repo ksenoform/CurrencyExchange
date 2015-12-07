@@ -2,15 +2,19 @@ package com.luxoft.cantor.repository.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import org.springframework.stereotype.Repository;
 
 import com.luxoft.cantor.repository.CurrencyRepository;
 import com.luxoft.cantor.repository.Dibs;
 
+/**
+ * @deprecated
+ * Implements CurrencyRepository interface use
+ * chardcore Currencys, this implementation was 
+ * replaced by DataBaseCurrencyRepository class
+ */
 
+@Deprecated
 public class InMemoryCurrencyRepository implements CurrencyRepository {
     private List<Dibs> AllCurrency = new ArrayList<Dibs>();
     
@@ -63,11 +67,5 @@ public class InMemoryCurrencyRepository implements CurrencyRepository {
         Dibs dibs = getCurrencyByCode(code);
         AllCurrency.remove(dibs);
     }
-
-	@Override
-	public void deleteRateByData(Date date) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

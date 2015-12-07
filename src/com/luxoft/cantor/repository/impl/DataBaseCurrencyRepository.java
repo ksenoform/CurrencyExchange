@@ -1,6 +1,5 @@
 package com.luxoft.cantor.repository.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -35,11 +34,4 @@ public class DataBaseCurrencyRepository implements CurrencyRepository {
 	public void deleteCurrencyByCode(String code) {
 		currencyDAO.deleteById(code);
 	}
-
-	@Override
-	public void deleteRateByData(Date date) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

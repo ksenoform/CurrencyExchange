@@ -22,6 +22,10 @@ public class Dibs {
 	@ElementCollection
 	private List<DateAndRateOfDibs> dibsRateList;
 
+	
+	/**************************************************************************
+	 *	Begin of builder section for Dibs class
+	 **************************************************************************/
 	public static class BuildDibs {
 		private String dibsCode;
 		private String dibsName;
@@ -49,9 +53,6 @@ public class Dibs {
 		}
 	}
 
-	public Dibs() {
-	};
-
 	public Dibs(BuildDibs buildDibs) {
 		this.dibsCode = buildDibs.dibsCode;
 		this.dibsName = buildDibs.dibsName;
@@ -61,6 +62,12 @@ public class Dibs {
 										 	   .size() - 1)
 								 .getDibsRate();
 	}
+
+	/**************************************************************************
+	 * 	End builder section
+	 **************************************************************************/
+	
+	public Dibs() {};
 
 	public BigDecimal getDibsRate() {
 		return dibsRate;
@@ -96,6 +103,7 @@ public class Dibs {
 		}
 
 		DateAndRateOfDibs dateAndRate = new DateAndRateOfDibs(dibsRate);
+		
 		this.dibsRateList.add(dateAndRate);
 		this.dibsRate = dibsRate;
 	}

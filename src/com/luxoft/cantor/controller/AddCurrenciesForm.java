@@ -16,15 +16,18 @@ public class AddCurrenciesForm {
 	@Autowired
 	CurrencyRepository currencyRepository;
 	
-	@RequestMapping(value="/forms/addCurrenciesForm", method = RequestMethod.GET)
+	@RequestMapping(value="/forms/addCurrenciesForm",
+					method = RequestMethod.GET)
 	public String showPageForAddCurrenciesForm() {
 		return "forms/addCurrenciesForm";
 	}
 	
-	@RequestMapping(value="/forms/afterAddCurrenciesForm", params="addCurrencies", method = RequestMethod.POST)
+	@RequestMapping(value="/forms/afterAddCurrenciesForm",
+					params="addCurrencies",
+					method = RequestMethod.POST)
 	public String getPageForAddCurrenciesForm(@RequestParam ("addCurrencie") String dibsCode,
-			@RequestParam ("addCurrencie") String dibsName,
-			@RequestParam ("addCurrencie") String dibsRate) {
+											  @RequestParam ("addCurrencie") String dibsName,
+											  @RequestParam ("addCurrencie") String dibsRate) {
 		Dibs dibs = new Dibs();
 		dibs.setDibsCode(dibsCode);
 		dibs.setDibsName(dibsName);

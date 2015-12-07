@@ -14,13 +14,16 @@ public class HelloController {
     @Autowired
     private CurrencyRepository currencyRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/",
+    				method = RequestMethod.GET)
     public String helloMessage(Model model) {
         model.addAttribute("currencyRates", currencyRepository.getAllCurrency());
+        
         return "welcome";
     }
     
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/",
+    				method = RequestMethod.POST)
     public String couldCurrencyExchangeView(@RequestParam ("exchange") String exchange) {
         return "redirect:/exchange/" + exchange;
   }
