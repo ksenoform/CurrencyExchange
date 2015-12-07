@@ -13,7 +13,8 @@ public class DateAndRateOfDibs {
 	private BigDecimal dibsRate = null;
 	
 	private String getCurrentDateAsString() {
-	    Date today = Calendar.getInstance().getTime();
+	    Date today = Calendar.getInstance()
+	    					 .getTime();
 	    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
 	 
 	    return formatter.format(today);

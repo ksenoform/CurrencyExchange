@@ -14,7 +14,8 @@ public class MenageMainView {
     @Autowired
     CurrencyRepository currencyRepository;
     
-    @RequestMapping(value = "addCurrenciesForm", method = RequestMethod.GET) 
+    @RequestMapping(value = "addCurrenciesForm",
+    				method = RequestMethod.GET) 
     public String showPageWitchFormWhoAllowsAddNewCurrency(Model model) {
         model.addAttribute("currenciesAdd", new Getting3TextValuesFromPage());
         return "addCurrenciesForm";

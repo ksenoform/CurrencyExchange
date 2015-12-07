@@ -22,9 +22,13 @@ public class ChaneMoney {
     private BigDecimal afterChange = null;
     
     @RequestMapping(value = "exchange/{currencCode}", method = RequestMethod.POST)
-    public String showAmountAfterChange(@ModelAttribute("enteredAmount") Blank blank, Model model) {
-        BigDecimal toChange = new BigDecimal(Integer.parseInt(blank.getAmount()));
-        BigDecimal priceChange = currencyRepository.getCurrencyByCode(currencCode).getDibsRate();
+    public String showAmountAfterChange(@ModelAttribute("enteredAmount") Blank blank,
+    									Model model) {
+        BigDecimal toChange = new BigDecimal(
+        								Integer.parseInt(
+        											blank.getAmount()));
+        BigDecimal priceChange = currencyRepository.getCurrencyByCode(currencCode)
+        										   .getDibsRate();
         afterChange = toChange.multiply(priceChange);
 
         return "redirect:/thanks/resultAndThanks";
@@ -43,13 +47,15 @@ public class ChaneMoney {
     }
 
     @RequestMapping(value = "/exchange/{currencCode}", method = RequestMethod.GET)
-    public String currencyExchangeView(@PathVariable ("currencCode") String currencCode, Model model) {
+    public String currencyExchangeView(@PathVariable ("currencCode") String currencCode,
+    								   Model model) {
         if ("manage currencies".equals(currencCode)) {
             return "redirect:/forms/menageForm";
         }
         
         model.addAttribute("enteredAmount", blank);
         model.addAttribute("currencCode", currencCode.substring(7));
+        
         this.currencCode = currencCode.substring(7);
         
         return "exchange/currency";
