@@ -28,17 +28,31 @@ public class ChaneMoney {
     private String currenyCode;
     private BigDecimal afterChange = null;
     
-    private BigDecimal convertStringToDigitsDot2Digits(String toConvert) throws ParseException {
+    private BigDecimal parsingProtectionAgainstOccurrenceException(DecimalFormat decimalFormat,
+    															   String toConvert) {
+    	BigDecimal toReturn = new BigDecimal(0.00);
+    	
+    	try {
+			toReturn = (BigDecimal) decimalFormat.parse(toConvert);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	
+    	return toReturn;
+    }
+    
+    private BigDecimal convertStringToDigitsDot2Digits(String toConvert) {
     	DecimalFormatSymbols symbols = new DecimalFormatSymbols();
     	symbols.setDecimalSeparator('.');
     	String pattern = "#,##0.0#";
     	DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
     	decimalFormat.setParseBigDecimal(true);
 
-    	return (BigDecimal) decimalFormat.parse(toConvert);
+    	return parsingProtectionAgainstOccurrenceException(decimalFormat, toConvert);
     }
     
-    @RequestMapping(value = "exchange/{currenyCode}", method = RequestMethod.POST)
+    @RequestMapping(value = "exchange/{currenyCode}",
+    				method = RequestMethod.POST)
     public String showAmountAfterChange(@ModelAttribute("encodeHermit") @Valid GettingLonelyWalueFromPage blank,
     									BindingResult result,
     									Model model) {
@@ -46,33 +60,30 @@ public class ChaneMoney {
     		return "exchange/currency";  
     	}
 
-    	BigDecimal toChange = new BigDecimal(0.00);
-		
-        try {
-			toChange = convertStringToDigitsDot2Digits(blank.getHermit());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-        BigDecimal priceChange = currencyRepository.getCurrencyByCode(currenyCode)
+    	BigDecimal toChange = convertStringToDigitsDot2Digits(blank.getHermit());
+		BigDecimal priceChange = currencyRepository.getCurrencyByCode(currenyCode)
         										   .getDibsRate();
         afterChange = toChange.multiply(priceChange);
 
         return "redirect:/thanks/resultAndThanks";
     }
     
-    @RequestMapping(value = "thanks/resultAndThanks", method = RequestMethod.POST) 
+    @RequestMapping(value = "thanks/resultAndThanks",
+    				method = RequestMethod.POST) 
     public String backToMainPage() {
         return "redirect:/";
     }
     
-    @RequestMapping(value = "thanks/resultAndThanks", method = RequestMethod.GET) 
+    @RequestMapping(value = "thanks/resultAndThanks",
+    				method = RequestMethod.GET) 
     public String showPageWitchExchangeResultAndThanks(Model model) {
         model.addAttribute("afterChange", afterChange);
         
         return "thanks/resultAndThanks";
     }
 
-    @RequestMapping(value = "/exchange/{currenyCode}", method = RequestMethod.GET)
+    @RequestMapping(value = "/exchange/{currenyCode}",
+    				method = RequestMethod.GET)
     public String currencyExchangeView(@PathVariable ("currenyCode") String currenyCode,
     								   Model model) {
         if ("manage currencies".equals(currenyCode)) {
