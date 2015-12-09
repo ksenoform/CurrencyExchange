@@ -10,17 +10,10 @@ import javax.persistence.Query;
 import com.luxoft.cantor.repository.Dibs;
 
 public class CurrencyDAO {
-	public void persist(String code,
-						String name,
-						String salary) {
-		EntityManager em = HibernateUtil.getEntityManager();
-		EntityTransaction transaction = em.getTransaction();
-		Dibs dibs = new Dibs.BuildDibs()
-							.addCode(code)
-							.addName(name)
-							.addRate(salary)
-							.build();
-		
+	private EntityManager em;
+	private EntityTransaction transaction;
+	
+	private void protectionAgainstOcurrenceExceptionWhenDataAreAddToDB(Dibs dibs) {		
 		try {
 			transaction.begin();
 			em.persist(dibs);
@@ -32,9 +25,23 @@ public class CurrencyDAO {
 			em.close();
 		}
 	}
+	
+	public void persist(String code,
+						String name,
+						String salary) {
+		em = HibernateUtil.getEntityManager();
+		transaction = em.getTransaction();
+		Dibs dibs = new Dibs.BuildDibs()
+							.addCode(code)
+							.addName(name)
+							.addRate(salary)
+							.build();
+		
+		protectionAgainstOcurrenceExceptionWhenDataAreAddToDB(dibs);
+	}
 
 	public void insert(Dibs dibs) {
-		EntityManager em = HibernateUtil.getEntityManager();
+		em = HibernateUtil.getEntityManager();
 		
 		em.getTransaction().begin();
 		em.persist(dibs);
@@ -42,7 +49,7 @@ public class CurrencyDAO {
 	}
 
 	public void update(Dibs dibs) {
-		EntityManager em = HibernateUtil.getEntityManager();
+		em = HibernateUtil.getEntityManager();
 		
 		em.getTransaction().begin();
 		em.merge(dibs);
@@ -51,7 +58,7 @@ public class CurrencyDAO {
 
 	public void deleteById(String code) {
 		Dibs dibs = findById(code);
-		EntityManager em = HibernateUtil.getEntityManager();
+		em = HibernateUtil.getEntityManager();
 		
 		em.getTransaction().begin();
 		em.remove(dibs);
@@ -59,7 +66,7 @@ public class CurrencyDAO {
 	}
 
 	public List<Dibs> findAll() {
-		EntityManager em = HibernateUtil.getEntityManager();
+		em = HibernateUtil.getEntityManager();
 		List<Dibs> list = new ArrayList<Dibs>();
 
 		try {
@@ -73,7 +80,7 @@ public class CurrencyDAO {
 	}
 
 	public Dibs findById(String code) {
-		EntityManager em = HibernateUtil.getEntityManager();
+		em = HibernateUtil.getEntityManager();
 		Query query = em.createQuery("FROM Dibs WHERE dibsCode = :dCode");
 		
 		query.setParameter("dCode", code);
