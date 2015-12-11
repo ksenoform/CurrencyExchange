@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.luxoft.cantor.repository.CurrencyRepository;
 import com.luxoft.cantor.repository.Dibs;
 import com.luxoft.cantor.support.Getting3TextValuesFromPage;
-import com.luxoft.cantor.support.GettingLonelyWalueFromPage;
+import com.luxoft.cantor.support.GettingLonelyValueFromPage;
 
 @Controller
 @RequestMapping(value = "forms")
@@ -31,13 +31,13 @@ public class RatesFormView {
     @RequestMapping(value = "ofFormToMenagment",
     				params = "Currencies",
     				method = RequestMethod.POST)
-    public String getFromPageWitchRatesForm(@ModelAttribute("currenc") GettingLonelyWalueFromPage currenc,
+    public String getFromPageWitchRatesForm(@ModelAttribute("currenc") GettingLonelyValueFromPage currenc,
             								Model model) {
         currentCode = currenc.getHermit();
         
         model.addAttribute("currentCode", currencyRepository.getCurrencyByCode(
         														currenc.getHermit()));
-        model.addAttribute("currenc", new GettingLonelyWalueFromPage());
+        model.addAttribute("currenc", new GettingLonelyValueFromPage());
         
         return "forms/menageChosenCurrency";
     }
@@ -45,14 +45,14 @@ public class RatesFormView {
     @RequestMapping(value = "ofFormOneCurrency",
     				params = "Delete Rate",
     				method = RequestMethod.POST)
-    public String recivingDelateRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyWalueFromPage currenc,
+    public String recivingDelateRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyValueFromPage currenc,
             										 Model model) {
         Dibs processingDibs = currencyRepository.getCurrencyByCode(currentCode);
         
         processingDibs.deleteRateFromList(currenc.getHermit());
         model.addAttribute("currentCode", currencyRepository.getCurrencyByCode(
         														currentCode));
-        model.addAttribute("currenc", new GettingLonelyWalueFromPage());
+        model.addAttribute("currenc", new GettingLonelyValueFromPage());
         
         return "forms/menageChosenCurrency";
     }
@@ -60,7 +60,7 @@ public class RatesFormView {
     @RequestMapping(value = "ofFormOneCurrency",
     				params = "Set as Active", 
     				method = RequestMethod.POST)
-    public String recivingSetAsActiveRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyWalueFromPage currenc,
+    public String recivingSetAsActiveRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyValueFromPage currenc,
             											  Model model) {
         Dibs processingDibs = currencyRepository.getCurrencyByCode(
         											currentCode);
@@ -72,7 +72,7 @@ public class RatesFormView {
     @RequestMapping(value = "ofFormOneCurrency",
     				params = "Add Rate",
     				method = RequestMethod.POST)
-    public String recivingAddRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyWalueFromPage currenc,
+    public String recivingAddRequestFromRatesForm(@ModelAttribute("currenc") GettingLonelyValueFromPage currenc,
             									  Model model) {
         Dibs processingDibs = currencyRepository.getCurrencyByCode(
         											currentCode);
@@ -87,7 +87,7 @@ public class RatesFormView {
     				method = RequestMethod.POST)
     public String sendingToPageWitchRatesForm(Model model) {
         model.addAttribute("currencyRates", currencyRepository.getAllCurrency());
-        model.addAttribute("currenc", new GettingLonelyWalueFromPage());
+        model.addAttribute("currenc", new GettingLonelyValueFromPage());
         
         return "forms/ratesForm";
     }
@@ -112,7 +112,7 @@ public class RatesFormView {
     @RequestMapping(value = "deleteForm",
     				method = RequestMethod.GET)
     public String showPageWitchFormWhoShowsDelatingCurrency(Model model) {
-        model.addAttribute("currenciesName", new GettingLonelyWalueFromPage());
+        model.addAttribute("currenciesName", new GettingLonelyValueFromPage());
         
         return "forms/deleteForm";
     }
@@ -121,7 +121,7 @@ public class RatesFormView {
     				params = "Delete currencies", 
     				method = RequestMethod.POST)
     public String sendingToPageWitchFormWhoShowsDelatingCurrency(Model model) {
-        model.addAttribute("currenciesName", new GettingLonelyWalueFromPage());
+        model.addAttribute("currenciesName", new GettingLonelyValueFromPage());
         
         return "forms/deleteForm";
     }

@@ -127,10 +127,4 @@ public class Dibs {
 	        }
 	    }
 	}
-
-	@Override
-	public String toString() {
-		return "Dibs [dibsCode=" + dibsCode + ", dibsName=" + dibsName + ", dibsRate=" + getDibsRate() + "]";
-	}
-
 }
