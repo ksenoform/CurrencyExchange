@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.luxoft.cantor.repository.CurrencyRepository;
-import com.luxoft.cantor.support.GettingLonelyWalueFromPage;
+import com.luxoft.cantor.support.GettingLonelyValueFromPage;
 
 @Controller
 public class ChaneMoney {
     @Autowired
-    private GettingLonelyWalueFromPage blank;
+    private GettingLonelyValueFromPage blank;
     @Autowired
     private CurrencyRepository currencyRepository;
     private String currenyCode;
@@ -53,7 +53,7 @@ public class ChaneMoney {
     
     @RequestMapping(value = "exchange/{currenyCode}",
     				method = RequestMethod.POST)
-    public String showAmountAfterChange(@ModelAttribute("encodeHermit") @Valid GettingLonelyWalueFromPage blank,
+    public String showAmountAfterChange(@ModelAttribute("encodeHermit") @Valid GettingLonelyValueFromPage blank,
     									BindingResult result,
     									Model model) {
     	if (result.hasErrors()) {

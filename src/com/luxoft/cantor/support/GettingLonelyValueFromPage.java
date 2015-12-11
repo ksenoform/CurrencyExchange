@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class GettingLonelyWalueFromPage {
+public class GettingLonelyValueFromPage {
 	@Min(value=0,
 		 message="{Warning.ToLess.Value}")
 	@Pattern(regexp="^\\d+(\\.(\\d){0,2})?",
